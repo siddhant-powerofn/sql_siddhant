@@ -1,0 +1,92 @@
+Create table Customers,Agent and Orders. Use primary key for each tables and foreign keys for connecting the tables.Use Comments while creating the tables.		
+
+Answers: create database test_siddhant //Creating the database
+	 use test_siddhant;
+
+	 Create table customer (
+    -> CUST_CODE varchar(120),
+    -> CUST_NAME varchar(120),
+    -> CUSR_CITY varchar(120),
+    -> PHONE_NO int,
+    -> AGENT_CODE varchar(120));
+
+	 create table AGENT (
+    -> AGENT_CODE varchar(120),
+    -> AGENT_NAME varchar(120),
+    -> COUNTRY varchar(120),
+    -> PHONE_NO int,
+    -> STATUS binary);
+
+	 create table ORDERS (
+    -> ORDER_NUM varchar(120),
+    -> CUST_CODE varchar(120),
+    -> AGENT_CODE varchar(120),
+    -> AMOUNT int,
+    -> ORDER_DATE date);
+
+ 	alter table customer
+    -> add primary key (CUST_CODE);
+
+ 	ALTER table AGENT
+    -> ADD PRIMARY KEY (AGENT_CODE);
+
+	 ALTER TABLE orders ADD FOREIGN KEY (CUST_CODE) REFERENCES cust
+omer(CUST_CODE);
+
+	 ALTER TABLE orders ADD FOREIGN KEY (AGENT_CODE) REFERENCES AGE
+NT(AGENT_CODE);
+
+	 INSERT INTO customer (CUST_CODE, CUST_NAME, CUSR_CITY, PHONE_N
+O, AGENT_CODE) VALUES ('C001', 'Albert', 'Chennai', 9798865876, 'A001'),('C002', 'Ravi', 'Bangalore', 9876123456, 'A002'), ('C003', 'Archana', 'Chennai', 94523098123, 'A004'), ('C004', 'Riya', 'Trichy', 9612309876, 'A002'), ('C005', 'Parithra', 'Kanyakumari', 9612309856, 'A005');
+
+	 INSERT INTO AGENT (AGENT_CODE, AGENT_NAME, COUNTRY, PHONE_NO, 
+STATUS) VALUES ('A001', 'Joe', 'Canada', 2345623452, 0);
+
+	 alter table AGENT MODIFY PHONE_NO BIGINT;
+
+ 	INSERT INTO AGENT (AGENT_CODE, AGENT_NAME, COUNTRY, PHONE_NO, 
+STATUS) VALUES ('A001', 'Joe', 'Canada', 2345623452, 0);
+
+	 INSERT INTO AGENT (AGENT_CODE, AGENT_NAME, COUNTRY, PHONE_NO, 
+STATUS) VALUES ('A002', 'Sara', 'India', 1234567890, 1);
+
+	 INSERT INTO AGENT (AGENT_CODE, AGENT_NAME, COUNTRY, PHONE_NO, 
+STATUS) VALUES ('A003', 'Wiley', 'Bahamas', 987654321, 1);
+
+	 INSERT INTO AGENT (AGENT_CODE, AGENT_NAME, COUNTRY, PHONE_NO, 
+STATUS) VALUES ('A004', 'Katniss', 'Ireland', 9456543698, 1);
+
+	 INSERT INTO AGENT (AGENT_CODE, AGENT_NAME, COUNTRY, PHONE_NO, STATUS) VALUES ('A005', 'Arjun', 'India', 9844342345, 0);
+
+Create table Customers,Agent and Orders. Use primary key for each tables and foreign keys for connecting the tables.Use Comments while creating the tables.												
+answers: alter table AGENT ADD COMMISSION DECIMAL;
+	 ALTER TABLE AGENT MODIFY COMMISSION DECIMAL(4,2);
+
+	 UPDATE AGENT SET COMMISSION='0.2' WHERE AGENT_CODE='A001';
+	 UPDATE AGENT SET COMMISSION='0.96' WHERE AGENT_CODE='A002';
+	 UPDATE AGENT SET COMMISSION='0.23' WHERE AGENT_CODE='A003';
+	 UPDATE AGENT SET COMMISSION='0.12' WHERE AGENT_CODE='A004';
+	 UPDATE AGENT SET COMMISSION='0.76' WHERE AGENT_CODE='A005';
+Delete the column Phone_No from the agents table.
+ 
+answer: ALTER TABLE AGENT
+    -> DROP COLUMN PHONE_NO;
+
+Rename the Column "Commision" as "Commision_Percentage".
+
+answer: alter table AGENT
+    -> change column commission commission_percentage decimal(4,2);
+
+Make a copy of agent table with a table name as "AGENT_DETAILS" and delete the old agent table with the name "AGENT" 
+
+answer: CREATE TABLE AGENT_DETAILS SELECT AGENT_CODE, AGENT_NAME, COUN
+TRY, STATUS, commission_percentage from AGENT;
+
+Delete all the order table records in a single command 
+
+answers: truncate table ORDERS;
+
+Alter the tables orders and set a default value for the column Amount
+
+answers: ALTER TABLE ORDERS ALTER AMOUNT SET DEFAULT 0;
+																									 

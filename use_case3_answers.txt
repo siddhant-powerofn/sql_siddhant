@@ -1,0 +1,24 @@
+1. Upload the CSV data via CLI into the database
+
+Answers: LOAD DATA LOCAL INIFLE '/home/siddhant/linux-playground/sql-training/usecase3/use_case3.csv' INTO TABLE USE_CASE3 FIELDS TERMINATED BY ',' IGNORE 1 ROWS;
+
+2. Find all the duplicate time entries for respective devices.
+
+Answers: SELECT CONSUMPTION, COUNT(CONSUMPTION) AS CONSUMPTION_COUNT FROM USE_CASE3  GROUP BY CONSU
+MPTION, DEVICE HAVING COUNT(CONSUMPTION)
+
+3. Find all the missing timestamps for respective devices.
+
+Answers: SELECT HOUR(TIME) AS HOUR, AVG(CONSUMPTION) FROM USE_CASE3 GROUP BY HOUR, DEVICE;
+
+4. Find the hour-wise cumulative consumption of each device.
+
+Answers: SELECT TIME, AVG(CONSUMPTION) FROM USE_CASE3 GROUP BY HOUR(TIME);
+
+5. Find the peak consumption reached in a given time range for all the devices.
+
+Answers: SELECT DEVICE, HOUR(TIME), SUM(CONSUMPTION) FROM USE_CASE3 GROUP BY 
+(HOUR(TIME));
+
+SELECT DEVICE, HOUR(TIME), MAX(CONSUMPTION) FROM USE_CASE3 WHERE CON
+SUMPTION=(SELECT MAX(CONSUMPTION) FROM USE_CASE3) GROUP BY DEVICE;

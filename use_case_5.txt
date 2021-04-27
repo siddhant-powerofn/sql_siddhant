@@ -1,0 +1,236 @@
+CREATE A TABLE AND DO THE FOLLOWING QUERIES;
+
+    CREATE TABLE BOOK (
+    -> ID INT,
+    -> NAME VARCHAR(35),
+    -> ISBN INT,
+    -> EDITION INT);
+    
+    INSERT INTO BOOK (ID, NAME, ISBN, EDITION) VALUES (1, 'PILIGRIM SOUL', 9876011, 1),(2,'PILIGRIM SOULS', 9876011, 2), (3, 'PYTHON FOR DATA SCIENCE', 9876012, 1), (4, 'PYTHON FOR DATA SCIENCE', 9876012, 1), (5, 'PYTHON FOR DATA SCIENCE', 9876012, 1), (6, 'C# 7.0 ALL IN ONE', 9876016, 1), (7, 'C# 7.0 ALL IN ONE', 9876016, 2), (8, 'c programming All-in-one', 9876017, 3), (9, 'cprogramming All-in-one', 9876017, 3), (10, 'JAVA PROGRAMMING', 9876018, 1);
+    
+	+------+--------------------------+---------+---------+
+	| ID   | NAME                     | ISBN    | EDITION |
+	+------+--------------------------+---------+---------+
+	|    1 | PILIGRIM SOUL            | 9876011 |       1 |
+	|    2 | PILIGRIM SOULS           | 9876011 |       2 |
+	|    3 | PYTHON FOR DATA SCIENCE  | 9876012 |       1 |
+	|    4 | PYTHON FOR DATA SCIENCE  | 9876012 |       1 |
+	|    5 | PYTHON FOR DATA SCIENCE  | 9876012 |       1 |
+	|    6 | C# 7.0 ALL IN ONE        | 9876016 |       1 |
+	|    7 | C# 7.0 ALL IN ONE        | 9876016 |       2 |
+	|    8 | c programming All-in-one | 9876017 |       3 |
+	|    9 | cprogramming All-in-one  | 9876017 |       3 |
+	|   10 | JAVA PROGRAMMING         | 9876018 |       1 |
+	+------+--------------------------+---------+---------+
+
+    CREATE TABLE AUTHOR (
+    -> ID BINARY,
+    -> FIRST_NAME VARCHAR(10),
+    -> LAST_NAME VARCHAR(20));
+    
+    INSERT INTO AUTHOR (ID, FIRST_NAME, LAST_NAME) VALUES (1, 'HORTSMAN', 'CAY S.'), (2, 'JOHN PAUL', 'MUELLER'), (3, 'MIKE', 'CHAPPLE'), (4, 'BARBARA', 'WALTER');
+	    
+	+------+------------+-----------+
+	| ID   | FIRST_NAME | LAST_NAME |
+	+------+------------+-----------+
+	| 1    | HORTSMAN   | CAY S.    |
+	| 2    | JOHN PAUL  | MUELLER   |
+	| 3    | MIKE       | CHAPPLE   |
+	| 4    | BARBARA    | WALTER    |
+	+------+------------+-----------+
+
+    CREATE TABLE BOOK_DETAILS (
+    -> BOOK_ID BINARY(2),
+    -> AUTHOR_ID BINARY);
+    
+    INSERT INTO BOOK_DETAILS (BOOK_ID, AUTHOR_ID) VALUES (1, 1), (2, 1), (3, 4), (4,4), (5, 4), (6, 2), (7, 2), (8, 3),(9, 3), (10, 2);
+    
+    	+---------+-----------+
+	| BOOK_ID | AUTHOR_ID |
+	+---------+-----------+
+	| 1       | 1         |
+	| 2       | 1         |
+	| 3       | 4         |
+	| 4       | 4         |
+	| 5       | 4         |
+	| 6       | 2         |
+	| 7       | 2         |
+	| 8       | 3         |
+	| 9       | 3         |
+	| 10      | 2         |
+	+---------+-----------+
+    
+    CREATE TABLE BOOK_REQUEST (
+    -> DUE_DATE DATE,
+    -> IS_ACTIVE BINARY,
+    -> CUSTOMER_ID INT,
+    -> BOOK_ID BINARY,
+    -> LIBRARIAN_ID INT);
+    
+    INSERT INTO BOOK_REQUEST (DUE_DATE, IS_ACTIVE, CUSTOMER_ID, BOOK_ID, LIBRARIAN_ID) VALUES ('2021-02-01', 1, 113, 1, 20211), ('2021-02-11', 1, 116, 8, 20211), ('2021-01-28', 1, 116, 3, 20233), ('2021-01-15', 0, 111, 7, 20211), ('2021-01-08', 0, 113, 5, 20233), ('2021-02-08', 1, 113, 4, 20233);
+    
+	+------------+-----------+-------------+---------+--------------+
+	| DUE_DATE   | IS_ACTIVE | CUSTOMER_ID | BOOK_ID | LIBRARIAN_ID |
+	+------------+-----------+-------------+---------+--------------+
+	| 2021-02-01 | 1         |         113 | 1       |        20211 |
+	| 2021-02-11 | 1         |         116 | 8       |        20211 |
+	| 2021-01-28 | 1         |         116 | 3       |        20233 |
+	| 2021-01-15 | 0         |         111 | 7       |        20211 |
+	| 2021-01-08 | 0         |         113 | 5       |        20233 |
+	| 2021-02-08 | 1         |         113 | 4       |        20233 |
+	+------------+-----------+-------------+---------+--------------+
+    
+
+    
+    CREATE TABLE CUSTOMER (
+    -> ID INT,
+    -> NAME VARCHAR(20),
+    -> ADDRESS VARCHAR(35));
+    
+    INSERT INTO CUSTOMER (ID, NAME, ADDRESS)
+    -> VALUES (111, 'KALA', '03 Ranjith St'), (112, 'AMY', '6 HUDSON ST'), (113, 'AJAY', '56 Murugappa st'), (114, 'BASKER', '23 BLUE ST'), (115, 'BELLA', '10 NEW ST'), (116, 'CYNTHIA', '107 PARK ST'), (117, 'ZARA', '34 LAMBORD ST');
+    
+	+------+---------+-----------------+
+	| ID   | NAME    | ADDRESS         |
+	+------+---------+-----------------+
+	|  111 | KALA    | 03 Ranjith St   |
+	|  112 | AMY     | 6 HUDSON ST     |
+	|  113 | AJAY    | 56 Murugappa st |
+	|  114 | BASKER  | 23 BLUE ST      |
+	|  115 | BELLA   | 10 NEW ST       |
+	|  116 | CYNTHIA | 107 PARK ST     |
+	|  117 | ZARA    | 34 LAMBORD ST   |
+	+------+---------+-----------------+
+    
+    CREATE TABLE LIBRARIANS (
+    -> ID INT,
+    -> NAME VARCHAR(25));
+    
+    INSERT INTO LIBRARIANS(ID, NAME) VALUES (20211, 'JULIA ROOSEVELT' ), (20233,'TOM WHITE');
+    
+	+-------+-----------------+
+	| ID    | NAME            |
+	+-------+-----------------+
+	| 20211 | JULIA ROOSEVELT |
+	| 20233 | TOM WHITE       |
+	+-------+-----------------+
+
+ANSWER[1]
+SELECT BOOK.NAME AS BOOK_NAME, BOOK.ISBN, BOOK.EDITION, AUTHOR.FIRST_NAME, AUTHOR.LAST_NAME FROM BOOK JOIN AUTHOR JOIN BOOK_DETAILS ON BOOK.ID = BOOK_DETAILS.BOOK_ID AND AUTHOR.ID =BOOK_DETAILS.AUTHOR_ID;
+
++--------------------------+---------+---------+------------+-----------+
+| BOOK_NAME                | ISBN    | EDITION | FIRST_NAME | LAST_NAME |
++--------------------------+---------+---------+------------+-----------+
+| PILIGRIM SOUL            | 9876011 |       1 | HORTSMAN   | CAY S.    |
+| PILIGRIM SOULS           | 9876011 |       2 | HORTSMAN   | CAY S.    |
+| PYTHON FOR DATA SCIENCE  | 9876012 |       1 | BARBARA    | WALTER    |
+| PYTHON FOR DATA SCIENCE  | 9876012 |       1 | BARBARA    | WALTER    |
+| PYTHON FOR DATA SCIENCE  | 9876012 |       1 | BARBARA    | WALTER    |
+| C# 7.0 ALL IN ONE        | 9876016 |       1 | JOHN PAUL  | MUELLER   |
+| C# 7.0 ALL IN ONE        | 9876016 |       2 | JOHN PAUL  | MUELLER   |
+| c programming All-in-one | 9876017 |       3 | MIKE       | CHAPPLE   |
+| cprogramming All-in-one  | 9876017 |       3 | MIKE       | CHAPPLE   |
+| JAVA PROGRAMMING         | 9876018 |       1 | JOHN PAUL  | MUELLER   |
++--------------------------+---------+---------+------------+-----------+
+
+ANSWER[2]
+SELECT BOOK.NAME ,AUTHOR.ID, AUTHOR.FIRST_NAME AS AUTHOR_NAME FROM BOOK JOIN AUTHOR JOIN BOOK_DETAILS ON BOOK.ID = BOOK_DETAILS.BOOK_ID AND AUTHOR.ID = BOOK_DETAILS.AUTHOR_ID WHERE BOOK.NAME REGEXP 'PROGRAMMING?';
+
++--------------------------+------+-------------+
+| NAME                     | ID   | AUTHOR_NAME |
++--------------------------+------+-------------+
+| c programming All-in-one | 3    | MIKE        |
+| cprogramming All-in-one  | 3    | MIKE        |
+| JAVA PROGRAMMING         | 2    | JOHN PAUL   |
++--------------------------+------+-------------+
+
+ANSWER[3]
+SELECT BOOK.NAME AS BOOK_NAME, BOOK_REQUEST.DUE_DATE, CUSTOMER.NAME AS CUSTOMER_NAME FROM BOOK JOIN BOOK_REQUEST JOIN CUSTOMER ON BOOK_REQUEST.CUSTOMER_ID = CUSTOMER.ID AND BOOK.ID=BOOK_REQUEST.BOOK_ID WHERE BOOK_REQUEST.IS_ACTIVE = 0;
+
++-------------------------+------------+---------------+
+| BOOK_NAME               | DUE_DATE   | CUSTOMER_NAME |
++-------------------------+------------+---------------+
+| PYTHON FOR DATA SCIENCE | 2021-01-08 | AJAY          |
+| C# 7.0 ALL IN ONE       | 2021-01-15 | KALA          |
++-------------------------+------------+---------------+
+
+ANSWER[4]
+SELECT DISTINCT NAME,ISBN,EDITION FROM BOOK;
+
++--------------------------+---------+---------+
+| NAME                     | ISBN    | EDITION |
++--------------------------+---------+---------+
+| PILIGRIM SOUL            | 9876011 |       1 |
+| PILIGRIM SOULS           | 9876011 |       2 |
+| PYTHON FOR DATA SCIENCE  | 9876012 |       1 |
+| C# 7.0 ALL IN ONE        | 9876016 |       1 |
+| C# 7.0 ALL IN ONE        | 9876016 |       2 |
+| c programming All-in-one | 9876017 |       3 |
+| cprogramming All-in-one  | 9876017 |       3 |
+| JAVA PROGRAMMING         | 9876018 |       1 |
++--------------------------+---------+---------+
+
+
+ANSWER[5]
+SELECT BOOK.NAME AS BOOK_NAME, CUSTOMER.NAME AS CUSTOMER_NAME,LIBRARIANS.NAME AS LIBRARIAN_NAME FROM BOOK JOIN BOOK_REQUEST ON BOOK.ID=BOOK_REQUEST.BOOK_ID JOIN CUSTOMER ON CUSTOMER.ID=BOOK_REQUEST.CUSTOMER_ID JOIN LIBRARIANS ON LIBRARIANS.ID=BOOK_REQUEST.LIBRARIAN_ID;
+
++--------------------------+---------------+-----------------+
+| BOOK_NAME                | CUSTOMER_NAME | LIBRARIAN_NAME  |
++--------------------------+---------------+-----------------+
+| PILIGRIM SOUL            | AJAY          | JULIA ROOSEVELT |
+| PYTHON FOR DATA SCIENCE  | CYNTHIA       | TOM WHITE       |
+| PYTHON FOR DATA SCIENCE  | AJAY          | TOM WHITE       |
+| PYTHON FOR DATA SCIENCE  | AJAY          | TOM WHITE       |
+| C# 7.0 ALL IN ONE        | KALA          | JULIA ROOSEVELT |
+| c programming All-in-one | CYNTHIA       | JULIA ROOSEVELT |
++--------------------------+---------------+-----------------+
+
+ANSWER[6]
+SELECT CUST.ID, CUST.NAME, SUM(IF(CUST.ID IN (SELECT BOOK_REQUEST.CUSTOMER_ID), (IF(BOOK_REQUEST.IS_ACTIVE='0', DATEDIFF('2021-01-20',BOOK_REQUEST.DUE_DATE),0)),0)) AS FINE_AMOUNT FROM CUSTOMER as CUST LEFT JOIN BOOK_REQUEST ON CUST.ID=BOOK_REQUEST.CUSTOMER_ID GROUP BY CUST.ID;
+
++------+---------+-------------+
+| ID   | NAME    | FINE_AMOUNT |
++------+---------+-------------+
+|  111 | KALA    |           5 |
+|  112 | AMY     |           0 |
+|  113 | AJAY    |          12 |
+|  114 | BASKER  |           0 |
+|  115 | BELLA   |           0 |
+|  116 | CYNTHIA |           0 |
+|  117 | ZARA    |           0 |
++------+---------+-------------+
+
+
+ANSWER[7]
+SELECT LIBRARIANS.NAME, COUNT(BOOK_REQUEST.LIBRARIAN_ID) FROM LIBRARIANS JOIN BOOK_REQUEST ON BOOK_REQUEST.LIBRARIAN_ID = LIBRARIANS.ID GROUP BY BOOK_REQUEST.LIBRARIAN_ID;
+
++-----------------+----------------------------------+
+| NAME            | COUNT(BOOK_REQUEST.LIBRARIAN_ID) |
++-----------------+----------------------------------+
+| JULIA ROOSEVELT |                                3 |
+| TOM WHITE       |                                3 |
++-----------------+----------------------------------+
+
+ANSWER[8]
+SELECT C.NAME AS CUSOTMER_NAME, B.NAME AS BOOK_NAME, B.EDITION, A.FIRST_NAME AS AUTHOR_FIRST_NAME FROM BOOK B JOIN BOOK_REQUEST R ON B.ID=R.BOOK_ID JOIN CUSTOMER C ON R.CUSTOMER_ID=C.ID JOIN BOOK_DETAILS D ON B.ID = D.BOOK_ID JOIN AUTHOR A ON D.AUTHOR_ID=A.ID GROUP BY CUSOTMER_NAME, BOOK_NAME HAVING COUNT(BOOK_NAME)>1;
+
++---------------+-------------------------+---------+-------------------+
+| CUSOTMER_NAME | BOOK_NAME               | EDITION | AUTHOR_FIRST_NAME |
++---------------+-------------------------+---------+-------------------+
+| AJAY          | PYTHON FOR DATA SCIENCE |       1 | BARBARA           |
++---------------+-------------------------+---------+-------------------+
+
+ANSWER[9]
+SELECT * FROM CUSTOMER WHERE ID NOT IN (SELECT CUSTOMER_ID FROM BOOK_REQUEST);
+
++------+--------+---------------+
+| ID   | NAME   | ADDRESS       |
++------+--------+---------------+
+|  112 | AMY    | 6 HUDSON ST   |
+|  114 | BASKER | 23 BLUE ST    |
+|  115 | BELLA  | 10 NEW ST     |
+|  117 | ZARA   | 34 LAMBORD ST |
++------+--------+---------------+
+
+
+
